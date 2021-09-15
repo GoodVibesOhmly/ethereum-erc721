@@ -22,10 +22,6 @@ contract NFTokenMetadata is
    */
   string internal nftSymbol;
 
-  /**
-   * @dev Mapping from NFT ID to metadata uri.
-   */
-  mapping (uint256 => string) internal idToUri;
 
   /**
    * @notice When implementing this contract don't forget to set nftName and nftSymbol.
@@ -67,54 +63,6 @@ contract NFTokenMetadata is
    * @param _tokenId Id for which we want uri.
    * @return URI of _tokenId.
    */
-  function tokenURI(
-    uint256 _tokenId
-  )
-    external
-    override
-    view
-    validNFToken(_tokenId)
-    returns (string memory)
-  {
-    return idToUri[_tokenId];
-  }
 
-  /**
-   * @notice This is an internal function which should be called from user-implemented external
-   * burn function. Its purpose is to show and properly initialize data structures when using this
-   * implementation. Also, note that this burn implementation allows the minter to re-mint a burned
-   * NFT.
-   * @dev Burns a NFT.
-   * @param _tokenId ID of the NFT to be burned.
-   */
-  function _burn(
-    uint256 _tokenId
-  )
-    internal
-    override
-    virtual
-  {
-    super._burn(_tokenId);
-
-    delete idToUri[_tokenId];
-  }
-
-  /**
-   * @notice This is an internal function which should be called from user-implemented external
-   * function. Its purpose is to show and properly initialize data structures when using this
-   * implementation.
-   * @dev Set a distinct URI (RFC 3986) for a given NFT ID.
-   * @param _tokenId Id for which we want URI.
-   * @param _uri String representing RFC 3986 URI.
-   */
-  function _setTokenUri(
-    uint256 _tokenId,
-    string memory _uri
-  )
-    internal
-    validNFToken(_tokenId)
-  {
-    idToUri[_tokenId] = _uri;
-  }
 
 }
