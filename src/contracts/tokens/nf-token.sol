@@ -257,6 +257,17 @@ contract NFToken is
     _owner = idToOwner[_tokenId];
     require(_owner != address(0), NOT_VALID_NFT);
   }
+  
+  function ownerOfInternal(
+    uint256 _tokenId
+  )
+    internal
+    view
+    returns (address _owner)
+  {
+    _owner = idToOwner[_tokenId];
+    require(_owner != address(0), NOT_VALID_NFT);
+  }
 
   /**
    * @notice Throws if `_tokenId` is not a valid NFT.
