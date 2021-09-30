@@ -8,7 +8,7 @@ contract EtherGals is NFTokenMetadata, Ownable
 {
     // Properties
     address payable feeAddress;
-    uint constant public galPrice = 0.00001 ether;
+    uint constant public galPrice = 0.05555 ether;
     uint constant public giftGals = 55;         // Gals Reserved for Giveaways and Team
     uint constant public maxGals = 5555;        // Total Gal Supply
 
